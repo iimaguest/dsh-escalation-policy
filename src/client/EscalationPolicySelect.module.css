@@ -1,0 +1,41 @@
+/* The escalation-policy icon trigger: a compact 28px icon-only chip matching
+   the sibling Access chip chrome (rounded pill, same hover/focus/disabled
+   token vocabulary), sized to one tool-row seat. */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 24px;
+  outline: none;
+  background: transparent;
+  color: var(--dsw-alias-label-secondary);
+  cursor: pointer;
+}
+
+.trigger:hover:not(:disabled) {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.trigger:focus-visible {
+  box-shadow: 0 0 0 2px var(--dsw-alias-border-l3);
+}
+
+.trigger:disabled {
+  color: var(--dsw-alias-label-dimmed);
+  cursor: default;
+}
+
+.triggerIcon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+/* The shared 16px glyphs render one step smaller on the exposed trigger. */
+.triggerIcon svg {
+  width: 14px;
+  height: 14px;
+}

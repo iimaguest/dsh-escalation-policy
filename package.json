@@ -24,7 +24,7 @@
     },
     "./client": {
       "types": "./lib/types/client.d.ts",
-      "default": "./lib/types/client.js"
+      "default": "./lib/client.js"
     },
     "./src/*": "./src/*",
     "./package.json": "./package.json"
@@ -32,6 +32,16 @@
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-session"
+      ],
+      "platform": "web"
     }
   },
   "files": [
