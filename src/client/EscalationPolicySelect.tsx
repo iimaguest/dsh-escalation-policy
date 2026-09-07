@@ -110,7 +110,7 @@ export function EscalationPolicySelect({ value, locked, command, t }: Escalation
 /** Injected face of the `conversation.input.left` escalation entry (the navigation-bound). */
 export interface EscalationPolicyEntryInjected {
   /** Submit one `/escalation` line against the calling session; resolves whether the host matched it. */
-  command: (sessionId: string, line: string) => Promise<boolean>
+  command: (line: string) => Promise<boolean>
 }
 
 /** Composed props of the registered `conversation.input.left` escalation entry. */
@@ -133,7 +133,8 @@ export function EscalationPolicyEntry({ useProjection, useSession, sessionId, co
     <EscalationPolicySelect
       value={value}
       locked={session?.removed ?? true}
-      command={line => command(sessionId, line)}
+      // `command` closes over the calling session, so only the line is passed.
+      command={line => command(line)}
       t={t}
     />
   )
