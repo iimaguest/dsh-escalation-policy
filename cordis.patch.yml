@@ -1,0 +1,9 @@
+# dsh-escalation-policy bundle patch — mount the escalation capability seam
+# into the profile plugin tree. The row's default policy follows the
+# permission mode: under `danger-full-access` there is nothing wider to
+# request, so the default denies; otherwise it asks.
+- insert:
+    - id: escalation
+      name: dsh-escalation-policy
+      config:
+        policy: !!js "(process.env.DSH_PERMISSION_MODE ?? 'workspace-write') === 'danger-full-access' ? 'deny' : 'ask'"
